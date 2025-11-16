@@ -1,0 +1,44 @@
+# pyproject.toml
+
+[project]
+name = "url-shortener"
+version = "0.1.0"
+description = "A FastAPI backend service"
+authors = [
+    { name = "Your Name", email = "you@example.com" }
+]
+packages = [
+    { include = "url_shortener", from = "src" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.105.0",
+    "uvicorn[standard]>=0.23.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["app"]
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "W", "B"]
+ignore = ["E203", "W503"]
+
+[dependency-groups]
+dev = [
+    "black (>=25.11.0,<26.0.0)",
+    "isort (>=7.0.0,<8.0.0)",
+    "ruff (>=0.14.5,<0.15.0)",
+    "pytest (>=9.0.1,<10.0.0)"
+]
